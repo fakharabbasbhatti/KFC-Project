@@ -8,6 +8,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
     :root{
@@ -62,15 +64,36 @@
     .nav-pill{background:rgba(255,255,255,0.06);padding:.45rem 0.8rem;border-radius:999px;color:rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.06)}
 
     /* Menu cards */
-    .menu-card{border-radius:12px;background:var(--white);box-shadow:var(--shadow);border:1px solid rgba(10,25,60,0.03);padding:1rem}
+    .menu-card{
+      border-radius:12px;
+      background:var(--white);
+      box-shadow:var(--shadow);
+      border:1px solid rgba(10,25,60,0.03);
+      padding:1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(20,40,80,0.12);
+    }
     .price-badge{background:linear-gradient(90deg,var(--sky-blue),var(--blue-2));color:white;padding:.2rem .6rem;border-radius:999px;font-weight:700}
 
     /* Buttons */
     .btn-primary-custom{
       background:linear-gradient(90deg,var(--blue-1),var(--blue-2));border:none;color:var(--white);box-shadow:0 8px 18px rgba(26,50,120,0.16);
+      transition: all 0.3s ease;
+    }
+    .btn-primary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(26,50,120,0.25);
     }
     .btn-outline-custom{
-      border:1px solid rgba(58,141,255,0.16);color:var(--blue-2);background:transparent;border-radius:999px;padding:.45rem .9rem
+      border:1px solid rgba(58,141,255,0.16);color:var(--blue-2);background:transparent;border-radius:999px;padding:.45rem .9rem;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-custom:hover {
+      background: rgba(58,141,255,0.08);
+      transform: translateY(-2px);
     }
 
     /* Section headings */
@@ -79,7 +102,14 @@
 
     /* Footer */
     footer{padding:2.5rem 0}
-    .social-circle{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--white);box-shadow:0 6px 18px rgba(26,50,120,0.06);}
+    .social-circle{
+      width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--white);box-shadow:0 6px 18px rgba(26,50,120,0.06);
+      transition: all 0.3s ease;
+    }
+    .social-circle:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(26,50,120,0.12);
+    }
 
     /* Responsive tweaks */
     @media (max-width:767px){
@@ -93,9 +123,9 @@
   <div class="container py-5">
 
     <!-- Header / Hero -->
-    <div class="hero mb-5">
+    <div class="hero mb-5" data-aos="fade-up" data-aos-duration="800">
       <div class="d-flex justify-content-between align-items-start flex-column flex-md-row">
-        <div class="d-flex gap-3 align-items-center">
+        <div class="d-flex gap-3 align-items-center" data-aos="fade-right" data-aos-delay="200">
           <div class="brand-mark">
             <div class="logo-pill">
               <!-- KFC-style placeholder icon (you may replace with real KFC logo) -->
@@ -108,14 +138,14 @@
           </div>
         </div>
 
-        <div class="mt-3 mt-md-0 d-flex align-items-center gap-2">
+        <div class="mt-3 mt-md-0 d-flex align-items-center gap-2" data-aos="fade-left" data-aos-delay="300">
           <div class="nav-pill small"><i class="fa-solid fa-location-dot"></i> Find a store</div>
           <a class="btn btn-light btn-sm" href="#menu">Order Now</a>
         </div>
       </div>
 
       <div class="row mt-4 align-items-center">
-        <div class="col-md-6">
+        <div class="col-md-6" data-aos="fade-right" data-aos-delay="400">
           <h2 class="fw-bold">Finger Lickin' Good — now in a cool blue mood.</h2>
           <p class="muted">Explore the menu, combos, and limited-time treats. This demo uses Bootstrap, Font Awesome & your requested color palette.</p>
 
@@ -124,7 +154,7 @@
             <a href="#offers" class="btn btn-outline-custom">Offers</a>
           </div>
         </div>
-        <div class="col-md-6 text-center">
+        <div class="col-md-6 text-center" data-aos="fade-left" data-aos-delay="500">
           <!-- Updated hero image -->
           <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3" alt="fried chicken" class="img-fluid rounded-4 shadow mt-3" style="max-width:520px;">
         </div>
@@ -132,8 +162,8 @@
     </div>
 
     <!-- NAV / quick actions -->
-    <div class="d-flex gap-2 justify-content-center flex-wrap mb-4">
-      <button class="btn btn-sm btn-light menu-filter">All</button>
+    <div class="d-flex gap-2 justify-content-center flex-wrap mb-4" data-aos="fade-up" data-aos-delay="300">
+      <button class="btn btn-sm btn-light menu-filter active">All</button>
       <button class="btn btn-sm btn-light menu-filter">Buckets</button>
       <button class="btn btn-sm btn-light menu-filter">Burgers</button>
       <button class="btn btn-sm btn-light menu-filter">Sides</button>
@@ -142,14 +172,14 @@
 
     <!-- Menu Grid -->
     <section id="menu" class="mb-5">
-      <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-3" data-aos="fade-up">
         <h3 class="section-title">Featured Menu</h3>
         <p class="muted small mb-0">Tasty items curated for you</p>
       </div>
 
       <div class="row g-3">
         <!-- Menu Item 1 -->
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
           <div class="menu-card h-100">
             <div class="d-flex gap-3">
               <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Original Recipe Chicken" class="rounded-3" style="width:110px;height:110px;object-fit:cover">
@@ -174,7 +204,7 @@
         </div>
 
         <!-- Menu Item 2 -->
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
           <div class="menu-card h-100">
             <div class="d-flex gap-3">
               <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Zinger Burger" class="rounded-3" style="width:110px;height:110px;object-fit:cover">
@@ -199,7 +229,7 @@
         </div>
 
         <!-- Menu Item 3 -->
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
           <div class="menu-card h-100">
             <div class="d-flex gap-3">
               <img src="https://images.unsplash.com/photo-1559715745-e1b33a271c8f?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Popcorn Chicken" class="rounded-3" style="width:110px;height:110px;object-fit:cover">
@@ -224,7 +254,7 @@
         </div>
 
         <!-- More items (repeat) -->
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
           <div class="menu-card h-100">
             <div class="d-flex gap-3">
               <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Fries" class="rounded-3" style="width:110px;height:110px;object-fit:cover">
@@ -248,7 +278,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
           <div class="menu-card h-100">
             <div class="d-flex gap-3">
               <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Cool Cola" class="rounded-3" style="width:110px;height:110px;object-fit:cover">
@@ -272,13 +302,38 @@
           </div>
         </div>
 
+        <!-- Additional menu item -->
+        <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+          <div class="menu-card h-100">
+            <div class="d-flex gap-3">
+              <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Chicken Wings" class="rounded-3" style="width:110px;height:110px;object-fit:cover">
+              <div class="flex-grow-1">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5 class="mb-1">Hot Wings</h5>
+                    <p class="small muted mb-1">Spicy and tangy flavor</p>
+                  </div>
+                  <div class="text-end">
+                    <div class="price-badge">$7.49</div>
+                    <div class="small mt-1 text-muted">6 pieces</div>
+                  </div>
+                </div>
+                <div class="mt-3 d-flex gap-2">
+                  <a href="#" class="btn btn-sm btn-primary-custom">Add</a>
+                  <a href="#" class="btn btn-sm btn-outline-custom">Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- Offers -->
     <section id="offers" class="mb-5">
       <div class="row g-3">
-        <div class="col-md-8">
+        <div class="col-md-8" data-aos="fade-right" data-aos-delay="200">
           <div class="menu-card">
             <h4 class="mb-2">Limited Time Offer</h4>
             <p class="muted small">Get the Blue Bucket — 8 pieces + fries + drink for a special price. Online orders only.</p>
@@ -288,7 +343,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" data-aos="fade-left" data-aos-delay="300">
           <div class="menu-card text-center">
             <h5 class="mb-1">Pickup</h5>
             <p class="small muted mb-3">Ready in 10-15 minutes</p>
@@ -299,7 +354,7 @@
     </section>
 
     <!-- Contact / Footer -->
-    <footer class="bg-white rounded-4 p-4">
+    <footer class="bg-white rounded-4 p-4" data-aos="fade-up">
       <div class="row align-items-center">
         <div class="col-md-6">
           <h5>KFC — Blue Theme</h5>
@@ -324,7 +379,17 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Animation JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,
+      mirror: true
+    });
+
     // small interactivity: filter demo (no backend)
     document.querySelectorAll('.menu-filter').forEach(btn=>{
       btn.addEventListener('click',(e)=>{
